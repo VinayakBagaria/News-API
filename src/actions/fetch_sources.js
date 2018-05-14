@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const SOURCES_URL = 'https://newsapi.org/v1';
-const API_KEY = '91a53883772d44bf8ee89d81249d4ac7';
+const SOURCES_URL = 'https://newsapi.org/v1/sources';
 
 const requestAPI = () => ({
   type: 'REQUEST_SOURCES'
@@ -12,12 +11,10 @@ const receiveAPI = result => ({
   payload: result.data
 });
 
-const requestData = url =>
+const requestData = () =>
   function requester(dispatch) {
     dispatch(requestAPI());
-    const ENDPOINT = `${SOURCES_URL}${url}apiKey=${API_KEY}`;
-    console.log(ENDPOINT);
-    axios(ENDPOINT).then(result => dispatch(receiveAPI(result)));
+    axios(SOURCES_URL).then(result => dispatch(receiveAPI(result)));
   };
 
 export default requestData;

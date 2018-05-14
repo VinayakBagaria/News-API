@@ -7,7 +7,7 @@ import './Container.css';
 class SourcesPage extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(requestData('/sources?'));
+    dispatch(requestData());
   }
   render() {
     const {
