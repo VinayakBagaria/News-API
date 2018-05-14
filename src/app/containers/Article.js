@@ -27,11 +27,8 @@ const Article = ({ urlToImage, title, description, publishedAt }) => (
       <Typography color="textSecondary">Published at: {publishedAt}</Typography>
     </CardContent>
     <CardActions>
-      <Button size="small" color="primary">
+      <Button variant="raised" size="small" color="primary" className="button">
         Share
-      </Button>
-      <Button size="small" color="primary">
-        Learn More
       </Button>
     </CardActions>
   </Card>
