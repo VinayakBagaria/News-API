@@ -6,7 +6,6 @@ import './Container.css';
 
 class ArticlesPage extends Component {
   componentWillMount() {
-    console.log(this.props);
     const {
       dispatch,
       match: {
