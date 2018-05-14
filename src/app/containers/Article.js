@@ -16,10 +16,18 @@ const styles = {
   }
 };
 
-const Article = ({ urlToImage, title, description, publishedAt, url }) => (
+const Article = ({
+  urlToImage,
+  title,
+  description,
+  publishedAt,
+  url,
+  source
+}) => (
   <Card style={styles.card}>
     <CardMedia image={urlToImage} style={styles.media} />
     <CardContent>
+      <Typography color="textSecondary">{source}</Typography>
       <Typography gutterBottom variant="headline" component="h2">
         {title}
       </Typography>

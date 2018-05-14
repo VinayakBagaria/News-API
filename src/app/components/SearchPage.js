@@ -12,11 +12,14 @@ class ArticlesPage extends Component {
         params: { id }
       }
     } = this.props;
-    dispatch(requestData(id));
+    dispatch(requestData(`/v1/articles?source=${id}`));
   }
   render() {
     const {
-      article: { isFetching, articles }
+      article: { isFetching, articles },
+      match: {
+        params: { id }
+      }
     } = this.props;
     const styles = { textAlign: 'center' };
     return (
@@ -24,7 +27,9 @@ class ArticlesPage extends Component {
         {isFetching &&
           articles.length === 0 && <h2 style={styles}>Loading...</h2>}
         {!isFetching && articles.length === 0 && <h2 style={styles}>Empty.</h2>}
-        {articles.length > 0 && <ArticlesContainer articles={articles} />}
+        {articles.length > 0 && (
+          <ArticlesContainer articles={articles} source={id} />
+        )}
       </Fragment>
     );
   }

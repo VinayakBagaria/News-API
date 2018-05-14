@@ -27,7 +27,7 @@ class ArticlesContainer extends Component {
         <label htmlFor="sorter">Sort descending</label>
         <div className="card-container">
           {this.state.articles.map((article, id) => (
-            <Article {...article} key={id} />
+            <Article {...article} key={id} source={this.props.source} />
           ))}
         </div>
       </Fragment>
