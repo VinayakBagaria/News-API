@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import SourcesContainer from './SourcesContainer';
-import requestData from './../actions/fetch_sources';
-import './App.css';
+import requestData from './../../actions/fetch_sources';
+import './Container.css';
 
-class App extends Component {
+class SourcesPage extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(requestData());
@@ -32,4 +32,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(SourcesPage);
