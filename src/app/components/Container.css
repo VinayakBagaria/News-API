@@ -8,3 +8,14 @@
 button {
   margin: 0 auto !important;
 }
+
+.search-area {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.search-area input {
+  width: 20vw;
+  margin: 40px auto;
+}

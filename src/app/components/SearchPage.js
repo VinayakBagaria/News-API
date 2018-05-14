@@ -1,36 +1,25 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import ArticlesContainer from './ArticlesContainer';
-import requestData from './../../actions/fetch_articles';
+import axios from 'axios';
 import './Container.css';
 
 class ArticlesPage extends Component {
-  componentWillMount() {
-    const {
-      dispatch,
-      match: {
-        params: { id }
-      }
-    } = this.props;
-    dispatch(requestData(`/v1/articles?source=${id}`));
-  }
+  state = { isFetching: false, articles: [] };
+  handleChange = e => {
+    console.log(e.target.value);
+  };
   render() {
-    const {
-      article: { isFetching, articles },
-      match: {
-        params: { id }
-      }
-    } = this.props;
     const styles = { textAlign: 'center' };
+    const { isFetching, articles } = this.state;
     return (
-      <Fragment>
+      <div className="search-area">
+        <input type="text" onChange={this.handleChange} />
         {isFetching &&
           articles.length === 0 && <h2 style={styles}>Loading...</h2>}
         {!isFetching && articles.length === 0 && <h2 style={styles}>Empty.</h2>}
-        {articles.length > 0 && (
-          <ArticlesContainer articles={articles} source={id} />
-        )}
-      </Fragment>
+        {articles.length > 0 && <ArticlesContainer articles={articles} />}
+      </div>
     );
   }
 }

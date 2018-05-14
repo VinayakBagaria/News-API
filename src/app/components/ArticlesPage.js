@@ -5,7 +5,7 @@ import requestData from './../../actions/fetch_articles';
 import './Container.css';
 
 class ArticlesPage extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const {
       dispatch,
       match: {
