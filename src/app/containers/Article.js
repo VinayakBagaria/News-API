@@ -16,7 +16,7 @@ const styles = {
   }
 };
 
-const Article = ({ urlToImage, title, description, publishedAt }) => (
+const Article = ({ urlToImage, title, description, publishedAt, url }) => (
   <Card style={styles.card}>
     <CardMedia image={urlToImage} style={styles.media} />
     <CardContent>
@@ -27,8 +27,14 @@ const Article = ({ urlToImage, title, description, publishedAt }) => (
       <Typography color="textSecondary">Published at: {publishedAt}</Typography>
     </CardContent>
     <CardActions>
-      <Button variant="raised" size="small" color="primary" className="button">
-        Share
+      <Button
+        variant="raised"
+        size="small"
+        color="primary"
+        className="button"
+        onClick={() => window.open(url, '_blank')}
+      >
+        View
       </Button>
     </CardActions>
   </Card>
