@@ -17,7 +17,7 @@ const Source = ({ name, description, category, country }) => (
       <Typography component="p">{description}</Typography>
     </CardContent>
     <CardActions>
-      <Button size="small">See more articles</Button>
+      <Button size="small">See articles</Button>
     </CardActions>
   </Card>
 );

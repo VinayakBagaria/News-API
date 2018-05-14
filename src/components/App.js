@@ -1,23 +1,26 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import SourcesContainer from './SourcesContainer';
 import requestData from './../actions/fetch_sources';
-import Source from '../containers/Source';
 import './App.css';
 
 class App extends Component {
   componentWillMount() {
-    console.log(this.props);
-    this.props.dispatch(requestData());
+    const { dispatch } = this.props;
+    dispatch(requestData());
   }
   render() {
     const {
       source: { isFetching, sources }
     } = this.props;
+    const styles = { textAlign: 'center' };
     return (
-      <div className="card-container">
-        {isFetching && <h1>Loading</h1>}
-        {sources.map((source, id) => <Source {...source} id={id} />)}
-      </div>
+      <Fragment>
+        {isFetching &&
+          sources.length === 0 && <h2 style={styles}>Loading...</h2>}
+        {!isFetching && sources.length === 0 && <h2 style={styles}>Empty.</h2>}
+        {sources.length > 0 && <SourcesContainer sources={sources} />}
+      </Fragment>
     );
   }
 }
