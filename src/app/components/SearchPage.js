@@ -12,7 +12,7 @@ class ArticlesPage extends Component {
         params: { id }
       }
     } = this.props;
-    dispatch(requestData(`/v1/articles?source=${id}`));
+    dispatch(requestData(id));
   }
   render() {
     const {
