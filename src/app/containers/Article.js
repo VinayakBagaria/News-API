@@ -48,4 +48,8 @@ const Article = ({
   </Card>
 );
 
+Article.defaultProps = {
+  urlToImage: ''
+};
+
 export default Article;

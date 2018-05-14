@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ArticlesContainer from './ArticlesContainer';
 import axios from 'axios';
@@ -7,7 +7,18 @@ import './Container.css';
 class ArticlesPage extends Component {
   state = { isFetching: false, articles: [] };
   handleChange = e => {
-    console.log(e.target.value);
+    this.setState({
+      articles: []
+    });
+    axios(
+      `https://newsapi.org/v2/everything?q=${
+        e.target.value
+      }&apiKey=91a53883772d44bf8ee89d81249d4ac7`
+    ).then(json =>
+      this.setState({
+        articles: json.data.articles
+      })
+    );
   };
   render() {
     const styles = { textAlign: 'center' };

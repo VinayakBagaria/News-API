@@ -17,14 +17,19 @@ class ArticlesContainer extends Component {
     });
   };
   render() {
+    const { source } = this.props;
     return (
       <Fragment>
-        <input
-          type="checkbox"
-          onChange={this.handleChange}
-          value="Reverse Sort"
-        />
-        <label htmlFor="sorter">Sort descending</label>
+        {source && (
+          <Fragment>
+            <input
+              type="checkbox"
+              onChange={this.handleChange}
+              value="Reverse Sort"
+            />
+            <label htmlFor="sorter">Sort descending</label>
+          </Fragment>
+        )}
         <div className="card-container">
           {this.state.articles.map((article, id) => (
             <Article {...article} key={id} source={this.props.source} />
