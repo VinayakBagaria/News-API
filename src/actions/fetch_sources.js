@@ -14,9 +14,8 @@ const receiveAPI = result => ({
 
 const requestData = () =>
   function requester(dispatch) {
-    console.log('in request');
-    dispatch(requestAPI);
-    return axios(SOURCES_URL).then(result => dispatch(receiveAPI(result)));
+    dispatch(requestAPI());
+    axios(SOURCES_URL).then(result => dispatch(receiveAPI(result)));
   };
 
 export default requestData;

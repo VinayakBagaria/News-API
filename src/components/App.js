@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import requestData from './../actions/fetch_sources';
+import Source from '../containers/Source';
 import './App.css';
 
 class App extends Component {
@@ -9,9 +10,13 @@ class App extends Component {
     this.props.dispatch(requestData());
   }
   render() {
+    const {
+      source: { isFetching, sources }
+    } = this.props;
     return (
-      <div>
-        <h1>App</h1>
+      <div className="card-container">
+        {isFetching && <h1>Loading</h1>}
+        {sources.map((source, id) => <Source {...source} id={id} />)}
       </div>
     );
   }
