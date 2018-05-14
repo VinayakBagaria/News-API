@@ -7,18 +7,23 @@ import './Container.css';
 class ArticlesPage extends Component {
   state = { isFetching: false, articles: [] };
   handleChange = e => {
+    const val = e.target.value;
     this.setState({
-      articles: []
+      isFetching: true
     });
-    axios(
-      `https://newsapi.org/v2/everything?q=${
-        e.target.value
-      }&apiKey=91a53883772d44bf8ee89d81249d4ac7`
-    ).then(json =>
+    setTimeout(() => {
       this.setState({
-        articles: json.data.articles
-      })
-    );
+        articles: []
+      });
+      axios(
+        `https://newsapi.org/v2/everything?q=${val}&apiKey=91a53883772d44bf8ee89d81249d4ac7`
+      ).then(json =>
+        this.setState({
+          articles: json.data.articles,
+          isFetching: false
+        })
+      );
+    }, 2000);
   };
   render() {
     const styles = { textAlign: 'center' };
