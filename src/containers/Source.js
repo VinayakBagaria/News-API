@@ -5,18 +5,19 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const Source = ({ source }) => (
+const Source = ({ name, description, category, country }) => (
   <Card className="card">
     <CardContent>
       <Typography color="textSecondary">Word of the Day</Typography>
       <Typography variant="headline" component="h2">
-        benevolent
+        {name}
       </Typography>
-      <Typography color="textSecondary">adjective</Typography>
-      <Typography component="p">well meaning and kindly.</Typography>
+      <Typography color="textSecondary">{category}</Typography>
+      <Typography color="textSecondary">{country}</Typography>
+      <Typography component="p">{description}</Typography>
     </CardContent>
     <CardActions>
-      <Button size="small">Learn More</Button>
+      <Button size="small">See more articles</Button>
     </CardActions>
   </Card>
 );
