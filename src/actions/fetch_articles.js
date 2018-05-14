@@ -15,7 +15,7 @@ const receiveAPI = result => ({
 const requestData = source =>
   function requester(dispatch) {
     dispatch(requestAPI());
-    const ENDPOINT = `${ARTICLES_URL}${source}apiKey=${API_KEY}`;
+    const ENDPOINT = `${ARTICLES_URL}${source}&apiKey=${API_KEY}`;
     console.log(ENDPOINT);
     axios(ENDPOINT).then(result => dispatch(receiveAPI(result)));
   };

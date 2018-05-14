@@ -6,21 +6,25 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const Article = () => (
-  <Card className={classes.card}>
-    <CardMedia
-      className={classes.media}
-      image="/static/images/cards/contemplative-reptile.jpg"
-      title="Contemplative Reptile"
-    />
+const styles = {
+  card: {
+    maxWidth: 345
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%' // 16:9
+  }
+};
+
+const Article = ({ urlToImage, title, description, publishedAt }) => (
+  <Card style={styles.card}>
+    <CardMedia image={urlToImage} style={styles.media} />
     <CardContent>
       <Typography gutterBottom variant="headline" component="h2">
-        Lizard
+        {title}
       </Typography>
-      <Typography component="p">
-        Lizards are a widespread group of squamate reptiles, with over 6,000
-        species, ranging across all continents except Antarctica
-      </Typography>
+      <Typography component="p">{description}</Typography>
+      <Typography color="textSecondary">Published at: {publishedAt}</Typography>
     </CardContent>
     <CardActions>
       <Button size="small" color="primary">

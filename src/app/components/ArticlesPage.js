@@ -6,8 +6,14 @@ import './Container.css';
 
 class ArticlesPage extends Component {
   componentWillMount() {
-    const { dispatch, sourceId } = this.props;
-    dispatch(requestData(sourceId));
+    console.log(this.props);
+    const {
+      dispatch,
+      match: {
+        params: { id }
+      }
+    } = this.props;
+    dispatch(requestData(id));
   }
   render() {
     const {
@@ -19,12 +25,12 @@ class ArticlesPage extends Component {
         {isFetching &&
           articles.length === 0 && <h2 style={styles}>Loading...</h2>}
         {!isFetching && articles.length === 0 && <h2 style={styles}>Empty.</h2>}
+        {articles.length > 0 && <ArticlesContainer articles={articles} />}
       </Fragment>
     );
   }
 }
 
-// {articles.length > 0 && <ArticlesContainer articles={articles} />}
 function mapStateToProps(state) {
   const { article } = state;
   return {

@@ -1,19 +1,19 @@
 import React, { Component, Fragment } from 'react';
-import Source from '../containers/Source';
+import Article from '../containers/Article';
 
 class ArticlesContainer extends Component {
   state = {
-    sources: []
+    articles: []
   };
   componentDidMount() {
-    const { sources } = this.props;
+    const { articles } = this.props;
     this.setState({
-      sources
+      articles
     });
   }
   handleChange = () => {
     this.setState({
-      sources: this.props.sources.reverse()
+      articles: this.props.articles.reverse()
     });
   };
   render() {
@@ -26,8 +26,8 @@ class ArticlesContainer extends Component {
         />
         <label htmlFor="sorter">Sort descending</label>
         <div className="card-container">
-          {this.state.sources.map((source, id) => (
-            <Source {...source} key={id} />
+          {this.state.articles.map((article, id) => (
+            <Article {...article} key={id} />
           ))}
         </div>
       </Fragment>
